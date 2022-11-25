@@ -5,8 +5,13 @@ import {FaSearch} from 'react-icons/fa'
 import {BsFillSunFill} from 'react-icons/bs'
 import '../assets/css/navbar.css'
 
-function Navbar () {
+function Navbar (props) {
     const [search, setSearch] = useState(false);
+    let today = new Date();
+    let day = today.getUTCDate();
+    let year = today.getUTCFullYear();
+    let month = today.toLocaleString('default', {month: 'long'});
+    let dayName = today.toLocaleDateString('default', { weekday: 'long' });  
 
     function showSearchBar () {
         setSearch(!search);
@@ -14,20 +19,20 @@ function Navbar () {
 
     return (
         <>
-        <div className="container-fluid">
+        <div className="container-fluid" style={{padding: '0rem 2rem', backgroundColor: '#f8f9fa'}}>
             <div className="row">
-                <div className="col-lg-12">
+                <div className="col-lg-12 p-0">
             <section className="navbar-container">
             <nav className="navbar navbar-expand-lg bg-light">
             <div className="container-fluid">
                 <div className="collapse navbar-collapse" style={{display:"flex !important", justifyContent:"space-between"}} id="navbarSupportedContent">
                 <div className="icon container-left">
-                <GiHamburgerMenu style={{marginRight: "1.5rem"}}/>
-                <FaSearch  style={{marginRight: "1.5rem"}} onClick={showSearchBar}/>
-                {search ? (<div className="container search-wrapper d-flex">
+                <GiHamburgerMenu style={{marginRight: "1.5rem", fontSize: '2rem'}} className={props.sidebar ? ('sidebar-smooth'): ('sidebar')} onClick={props.showSidebar}/>
+                <FaSearch  style={{marginRight: "1.5rem", fontSize: '2rem'}} onClick={showSearchBar}/>
+                <div className="container search-wrapper d-flex" style={{visibility: "hidden"}}>
                 <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                 <button type="button" className="btn btn-secondary mr-2 ml-2">Go</button>
-                </div>):(<h2></h2>)}
+                </div>
                 </div>
                 <ul className="navbar-nav mb-2 mb-lg-0">
                     <li className="nav-item">
@@ -60,7 +65,7 @@ function Navbar () {
                 <div className="col-lg-12 bg-light">
                 <div className="header-container d-flex" style={{justifyContent:'space-between', margin:'1rem 0'}}>
                     <div className="date-container">
-                        <h6>Sunday, October 16, 2022</h6>
+                        <h6>{`${dayName}, ${month} ${day}, ${year}`}</h6>
                         <p>Today's Paper</p>
                     </div>
                     <div className="logo-wrapper" style={{width:'350px'}}>
@@ -103,6 +108,16 @@ function Navbar () {
                 </div>
                 </div>
             </div>
+                <div className="row live_wrapper_row">
+                    <div className="container live_wrapper_container">
+                        <div className="col-lg-8 live_wrapper">
+                            <h6 className='live_section'>LIVE</h6>
+                            <p>World Cup Updates <span className='minutes_ago'> 11 min ago</span></p>
+                            <p>Russia - Ukraine War<span className='minutes_ago'> 29 min ago</span></p>
+                        </div>
+                    </div>
+                </div>
+                <hr className='live_wrapper_line'/>
         </div>
         </>
     )

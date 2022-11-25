@@ -1,6 +1,9 @@
 import {React, useEffect, useState} from "react";
 import axios from "axios";
 import { getAllByPlaceholderText } from "@testing-library/react";
+import MainNews from "./MainNews";
+import MostPopular from "./MostPopular";
+import BestBooks from "./BestBooks";
 
 
 
@@ -35,31 +38,21 @@ function Main () {
                     <div className="col-lg-8">
                     {articles &&
                             articles.map((el, index) => {
-                                return (<div className="card m-5" key={el.id}>
-                                <img src={value[index]} className="card-img-top" alt="..."/>
-                                <div className="card-body">
-                                    <h5 className="card-title">{el.title}</h5>
-                                    <p className="card-text">{el.abstract}</p>
-                                    <a href={el.url} className="btn btn-primary">Watch more</a>
-                                </div>
-                            </div>)
+                                if(el.media.length != 0){
+                                    return (
+                                        <div className="news-wrapper" key={el.id}>
+                                        <MainNews path={value[index]} {...el}/>
+                                    </div>
+                                    )
+                                }
                             })
                         }
                     </div>
                     <div className="col-lg-4">
-                        <h2>Prova</h2>
-                        {/* {articles &&
-                            articles.map((el) => {
-                                return (<div className="card">
-                                <img src="..." className="card-img-top" alt="..."/>
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" className="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>)
-                            })
-                        } */}
+                        <MostPopular />
+                    </div>
+                    <div className="col-lg-4">
+                    <BestBooks />
                     </div>
                 </div>
             </div>

@@ -1,0 +1,41 @@
+.sidebar-container li{
+    list-style: none;
+    padding: 1rem 3rem;
+}
+
+.sidebar-container li:hover{
+ background-color: #333;
+ color: #ddd;
+}
+.sidebar-container a {
+    text-decoration: none;
+    color: #333;
+}
+
+.row .hide-sidebar {
+    width: 0;
+    transition: width 1s;
+}
+
+.row .show-sidebar{
+    width: 25%;
+    transition: width 1s;
+}
+
+.row .show-content {
+    visibility: visible;
+    transition: visibility .4s;
+}
+.row .hide-content {
+    visibility: hidden;
+    transition: visibility .4s;
+}
+
+.row .w-100{
+    width: 100%;
+    transition: width 1s;
+}
+.row .w-75{
+    width: 75%;
+    transition: width 1s;
+}
