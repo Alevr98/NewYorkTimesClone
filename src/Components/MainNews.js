@@ -6,7 +6,7 @@ function MainNews (props) {
     const {path, id, title, abstract, url} = props;
     return (
         <a href={url} style={{textDecoration: "none", color: "#333"}}>
-        <div className="container news-wrapper" key={id} style={{padding:'2rem'}}>
+        <div className="container news-wrapper" key={id} style={{padding:'1rem'}}>
             <div className="row image_container">
                 <div className="col-lg-4 text_container">
                     <h6><b>{title}</b></h6>

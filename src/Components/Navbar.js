@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import '../assets/css/navbar.css';
 import Logo from '../assets/IMG/logo.png';
-import { changeSidebar, changeSearch } from '../redux/sidebar';
+import { changeSidebar, changeSearch } from '../redux/store';
 
 function Navbar (props) {
     let navigate = useNavigate();

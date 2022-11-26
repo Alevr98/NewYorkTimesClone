@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.css"
 import 'bootstrap/dist/js/bootstrap.min.js'
 import './assets/css/index.css'
 import { Provider } from 'react-redux'; 
-import  store  from './redux/sidebar';
+import  store  from './redux/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
