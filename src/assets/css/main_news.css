@@ -1,0 +1,5 @@
+@media screen and (min-width:250px) and (max-width:992px){
+    .text_container h6, .text_container p {
+        text-align: center;
+        }
+}

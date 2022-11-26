@@ -34,22 +34,26 @@ function MostPopular () {
                         </div>
                     {
                         articles && articles.map((article, index) => {
-                            const {title, abstract, path, id} = article;
+                            const {title, abstract, id, url} = article; 
                             let descShort = abstract.substring(0, 50);
                             if(images[index] == undefined){
                                 return(
-                                    <div className="col-lg-6 mb-3 text-center" key={id} style={{display:'none'}}>
-                                        <img src={images[index]} alt="" width='150' style={{padding:'10px'}}/>
+                                    <div className="col-6 sm-3 text-center" key={id} style={{display:'none'}}>
+                                    <a href={url} style={{textDecoration: 'none', color: '#333'}}> 
+                                        <img src={images[index]} alt="" style={{padding:'10px', width:'-webkit-fill-available', minWidth:'100px'}}/>
                                         <h6><b>{title}</b></h6>
                                         <p>{`${descShort}...`}  <b style={{cursor: 'pointer'}}>Load more</b></p>
+                                    </a>
                                     </div>
                                     );                 
                                 }else {
-                                    return(
-                                        <div className="col-lg-6 mb-3 text-center" key={id}>
-                                            <img src={images[index]} alt="" width='150' style={{padding:'10px'}}/>
+                                    return(    
+                                        <div className="col-6 sm-3 text-center" key={id}>
+                                    <a href={url} style={{textDecoration: 'none', color: '#333'}}> 
+                                            <img src={images[index]} alt="" style={{padding:'10px', width: '-webkit-fill-available', minWidth:'100px'}}/>
                                             <h6><b>{title}</b></h6>
                                             <p>{`${descShort}...`}  <b style={{cursor: 'pointer'}}>Load more</b></p>
+                                        </a>
                                         </div>
                                         );   
                             }
