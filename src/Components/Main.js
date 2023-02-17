@@ -3,7 +3,6 @@ import axios from "axios";
 import { getAllByPlaceholderText } from "@testing-library/react";
 import MainNews from "./MainNews";
 import MostPopular from "./MostPopular";
-import BestBooks from "./BestBooks";
 
 
 
@@ -50,9 +49,6 @@ function Main () {
                     </div>
                     <div className="col-lg-4">
                         <MostPopular />
-                    </div>
-                    <div className="col-lg-4">
-                    <BestBooks />
                     </div>
                 </div>
             </div>

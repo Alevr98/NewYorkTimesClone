@@ -6,26 +6,25 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import '../assets/css/navbar.css';
 import Logo from '../assets/IMG/logo.png';
-import { changeSidebar, changeSearch } from '../redux/store';
+import { changeSidebar, changeSearch, changeVal } from '../redux/store';
 
 function Navbar (props) {
     let navigate = useNavigate();
-    /* const [search, setSearch] = useState(false); */
     let today = new Date();
     let day = today.getUTCDate();
     let year = today.getUTCFullYear();
     let month = today.toLocaleString('default', {month: 'long'});
     let dayName = today.toLocaleDateString('default', { weekday: 'long' });  
     const dispatch = useDispatch();
-
-
-
-    /* function showSearchBar () {
-        setSearch(!search);
-    } */
+    
+    const handleChange = (event) => {
+        dispatch(changeSearch());
+    }
     const handleSubmit = () => (e) => {
         const inputValue = document.querySelector('#searchButton').value;
-        navigate(`/search?query=${inputValue}`);
+        dispatch(changeSearch());
+        dispatch(changeVal(inputValue));
+        navigate(`/search`);
     }
 
     return (
@@ -39,12 +38,12 @@ function Navbar (props) {
                 <div className="collapse navbar-collapse items-container" style={{display:"flex !important", justifyContent:"space-between"}} id="navbarSupportedContent">
                 <div className="icon container-left">
                     <div className="container search-wrapper d-flex" style={{visibility: props.search ? 'visible' : 'hidden'}}>
-                        <input className="form-control me-2" id='searchButton' type="search" placeholder="Search" aria-label="Search" />
+                        <input className="form-control me-2" id='searchButton' type="search" placeholder="Search" aria-label="Search"/>
                         <button type="button" onClick={handleSubmit()} className="btn btn-secondary mr-2 ml-2">Go</button>
                     </div>
                     <div className="icon-wrapper" style={{display:'flex'}}>
                 <GiHamburgerMenu style={{marginRight: "1.5rem", fontSize: '2rem', cursor: 'pointer'}} className={!props.sidebar ? ('sidebar-smooth'): ('sidebar')} onClick={() => dispatch(changeSidebar())}/>
-                <FaSearch  style={{marginRight: "1.5rem", fontSize: '2rem'}} onClick={() => dispatch(changeSearch())}/>
+                <FaSearch  style={{marginRight: "1.5rem", fontSize: '2rem'}} onClick={handleChange}/>
                     </div>
                 </div>
                 <ul className="navbar-nav mb-2 mb-lg-0 section-container">

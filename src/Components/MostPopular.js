@@ -21,6 +21,7 @@ function MostPopular () {
         } 
     }
 
+
     useEffect(() => {
         apiRequest();
     }, [])

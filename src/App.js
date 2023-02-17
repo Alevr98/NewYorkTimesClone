@@ -12,6 +12,7 @@ import  { useDispatch, useSelector } from 'react-redux'
 function App() {
   const { sidebar } = useSelector((state) => state);
   const { search } = useSelector((state) => state);
+  const { searchVal } = useSelector((state) => state);
   const store = useSelector((state) => state);
   return (
     <>
@@ -37,7 +38,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />}/>
         <Route path="/article/:id" element={<Article />}/>
-        <Route path="/search" element={<Search />}/>
+        <Route path="/search" element={<Search query={searchVal}/>}/>
         <Route path="*" element={<Error />} />
       </Routes>
       <Footer />
